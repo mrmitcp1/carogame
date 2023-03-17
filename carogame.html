@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>caro game</h1>
+<p id="game"></p>
+<button onclick="btn()">click</button>
+<script>
+    let turn = 0;
+    let caro = []
+    let game = document.getElementById('game')
+    for (let i = 0; i < 5; i++) {
+        caro[i] = new Array('o', 'o', 'o', 'o', 'o')
+        game.innerHTML += caro[i].join('&nbsp;&nbsp;') + '<br>'
+    }
+    function btn() {
+       let x = +prompt('nhap vi tri ngang');
+       let y = +prompt('nhap vi tri doc');
+       turn++;
+       if (turn%2!==0){
+           caro[x][y]='x'
+       }else caro[x][y]='0'
+       game.innerHTML='';
+        for (let j = 0; j < 5 ; j++) {
+            game.innerHTML+=caro[j].join('&nbsp;&nbsp;') + '<br>'
+        }
+
+        for (let i = 0; i < 5; i++) {
+            for (let j = 0; j < 5; j++) {
+                if (caro[i][j]==='x'&&caro[i+1][j]==='x'&&caro[i+2][j]==='x' ||
+                caro[i][j]==='x'&&caro[i][j+1]==='x'&& caro[i][j+2]==='x'){
+                    alert('x win')
+                }
+                 else if (caro[i][j]==='0'&&caro[i+1][j]==='0'&&caro[i+2][j]==='0' ||
+                    caro[i][j]==='0'&&caro[i][j+1]==='0'&& caro[i][j+2]==='0'){
+                    alert('0 win')
+                }
+            }
+        }
+
+    }
+</script>
+</body>
+</html>
